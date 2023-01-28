@@ -1,0 +1,56 @@
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group ">
+            <label for="Username" class="control-label">User Name</label>
+            <input type="text" name="Username"  formControlName="UserName" class="form-control" 
+             [ngClass]="{'is-invalid':isSubmit && myform['UserName'].errors}"
+            >
+   
+            <div *ngIf="isSubmit && myform['UserName'].errors" >
+                    <div *ngIf="myform['UserName'].errors['required']"  class="error">
+                        User name required
+                    </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="control-label">Email <Address></Address></label>
+            <input type="text" name="email"  formControlName="EmailAddress" class="form-control">
+            <div *ngIf="isSubmit && myform['EmailAddress'].errors" >
+                <div *ngIf="myform['EmailAddress'].errors['required']" class="error" >
+                   Email required
+                </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="contact" class="control-label">Contact No</label>
+            <input type="text" name="contact"  formControlName="ContactNo"  class="form-control">
+            <div *ngIf="isSubmit && myform['ContactNo'].errors" >
+                <div *ngIf="myform['ContactNo'].errors['required']"  class="error">
+                    ContactNo required
+                </div>
+                <div *ngIf="myform['ContactNo'].errors['maxlength']"  class="error">
+                    ContactNo can not exceed 15 character
+                </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="pass" class="control-label">Password</label>
+            <input type="password" name="pass"  formControlName="Password"  class="form-control">
+            <div *ngIf="isSubmit && myform['Password'].errors" >
+                <div *ngIf="myform['Password'].errors['required']"  class="error">
+                    Password required
+                </div>
+                <div *ngIf="myform['Password'].errors['maxlength']" class="error" >
+                   Maximum 5 character
+                </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Register" class="btn btn-primary" [disabled]="!registerForm.valid">
+        </div>
+    </form>
+    pristine:  {{registerForm.pristine}}
+    valid: {{registerForm.valid}}
+    touched:  {{registerForm.touched}}
+    </div>
+
